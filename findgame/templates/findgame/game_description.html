@@ -1,0 +1,41 @@
+{% extends 'main.html' %}
+{% block title %} <title>{{ game.name }}</title> {% endblock %}
+{% block content %}
+
+<body>
+    <div class="game-details-container">
+        <h1 class="game-title">{{ game.name }}</h1>
+
+        <div class="game-image">
+            <img src="{{ game.picture }}" alt="{{ game.name }}">
+        </div>
+
+        <div class="details-section">
+            <h3>მიზანი:</h3>
+            <p>{{ game.description }}</p>
+        </div>
+
+        <div class="details-section">
+            <h3>განვითარებადი უნარები:</h3>
+            <p>{{ game.keyFeatures }}</p>
+        </div>
+
+        <div class="details-section">
+            <h3>როგორ ვითამაშოთ:</h3>
+            <p>{{ game.howToPlay }}</p>
+        </div>
+
+        <div class="details-section">
+            <h3>რჩევები:</h3>
+            <p>{{ game.tips }}</p>
+        </div>
+
+        <div class="card_buttons">
+            <a href="#" class="button">ჩამოტვირთე</a>
+            <a href="#" class="button">❤დამატება</a>
+            <a href="#" class="button">წაშლა</a>
+        </div>
+    </div>
+</body>
+
+{% endblock %}

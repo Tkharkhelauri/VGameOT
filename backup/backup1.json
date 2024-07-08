@@ -1,0 +1,118 @@
+
+[
+  {
+    "model": "findgame.game",
+    "pk": 1,
+    "fields": {
+      "name": "Scattergories",
+      "picture": "https://lh7-us.googleusercontent.com/RabQAjg6MCnObcUOxZkAQy3OtzNyfPjOIjYMDw7HzskCpd9PxPa2Y-CHQla2QqDvOM0WlVnUi9VERCNz6LELs9Kn1T3tMqWQlWFwkqMV8wmqtnOb6OaeqVvfhtglXVDBL-8ohoWfJ1Za5IiaXcMunJM",
+      "equipment": "Paper and pencil",
+      "category": "Board Games",
+      "numberOfPlayers": "2-6",
+      "keyFeatures": "Fast-paced, hilarious, flexes imagination and creativity for teens.",
+      "tips": "Use different thinking strategies to produce unique words, like imagining you're in those scenarios.",
+      "recommendedAges": "12+",
+      "description": "As a game night and party classic, this game is sure to deliver fun and laughter and is suitable for birthday party activities for teens. Scattergories come as a board game or card set readily available online and at retailers.",
+      "howToPlay": "#",
+      "content": "file.pdf"
+    }
+  },
+  {
+    "model": "findgame.game",
+    "pk": 2,
+    "fields": {
+      "name": "Trivia Quiz for Teens",
+      "picture": "https://ahaslides.com/wp-content/uploads/2023/10/Screenshot-2023-10-22-at-10.57.45-PM.webp",
+      "equipment": "Online quiz platform",
+      "category": "Trivia Games",
+      "numberOfPlayers": "unlimited",
+      "keyFeatures": "Thrilling hidden after the gamified-based puzzle for teenagers with leaderboards, badges and rewards",
+      "tips": "Use your mobile phone to play quiz games via links or QR codes and see instantly leaderboard updates. Perfect for virtual teen gatherings.",
+      "recommendedAges": "12+",
+      "description": "#",
+      "howToPlay": "There are many quiz platforms where teens can check their general knowledge directly. Parents can also host the live quiz challenge party for teens super easily from AhaSlides quiz maker. Many ready-to-use quiz templates ensure you can excellently finish at the last minute.",
+      "content": "file.pdf"
+    }
+  },
+  {
+    "model": "findgame.game",
+    "pk": 3,
+    "fields": {
+      "name": "Codenames",
+      "picture": "https://lh7-us.googleusercontent.com/WMCWyok1YtABokfCq3FiYa3e_8wDQE0ZaSoiIkMMHzkKAzHBfa31GNGoeSHFoj9y0bWi1gixU3qyNRrf3xiSBvf9o499FlQGw5RTohxt-XdgmwXEgzqMB6hlzdSCtlIQDdy44VMOiMpm5reLl2fMzbY",
+      "equipment": "Codenames Board Game set",
+      "category": "Board Games",
+      "numberOfPlayers": "2-8+ players divided into teams",
+      "keyFeatures": "Team-based, fast-paced, builds critical thinking and communication for teens.",
+      "tips": "#",
+      "recommendedAges": "14+",
+      "description": "There are also Codename versions like Pictures and Deep Undercover tailored for different interests. As an award-winning title, Codenames makes an engaging game night choice parents can feel good about for teens.",
+      "howToPlay": "Teams compete to make contact with all their secret agent words on a game board first by guessing words based on one-word clues from \"spymasters\".",
+      "content": "file.pdf"
+    }
+  },
+  {
+    "model": "findgame.game",
+    "pk": 4,
+    "fields": {
+      "name": "Taboo",
+      "picture": "https://lh7-us.googleusercontent.com/skbSNFusU-uif2Rf-r0tCariLs1FdpOYNnFXn10h5cZTGltx-AvyP6xhahKL46nIUt8HT0cVAnQntuI7V8ZLzmDF1_oZdywjekEVL68-MbcdjMtGO6ontSlAynrr5V_2waJe-qZWAJ2ID91E1R-1uy4",
+      "equipment": "Paper, pencil and timer",
+      "category": "Word Games",
+      "numberOfPlayers": "4-12",
+      "keyFeatures": "The word guessing game flexes communication skills and creativity for teens.",
+      "tips": "#",
+      "recommendedAges": "12+",
+      "description": "Another board game with fast pacing keeps everyone entertained and makes a great addition to the wonderful choice of games for teens. Because teammates work together against the timer, not each other, parents can feel good about what positive interactions Taboo inspires kids to have.",
+      "howToPlay": "Describe words on a card to teammates without using the taboo words listed, against a timer.",
+      "content": "file.pdf"
+    }
+  },
+  {
+    "model": "findgame.game",
+    "pk": 5,
+    "fields": {
+      "name": "Scrabble",
+      "picture": "https://upload.wikimedia.org/wikipedia/commons/5/5d/Scrabble_game_in_progress.jpg",
+      "equipment": "Scrabble board, letter tiles, tile racks, score sheet, pen/pencil.",
+      "category": "Word Game, Board Game",
+      "numberOfPlayers": "2-4",
+      "keyFeatures": "Word formation, vocabulary, strategy.",
+      "tips": "Look for opportunities to create multiple words in a single turn. Utilize the bonus squares (double letter, triple word, etc.) to maximize points. Balance scoring with using high-value tiles strategically.",
+      "recommendedAges": "8+",
+      "description": "Players form words on the board using letter tiles, aiming to score the most points based on letter values and bonus squares.",
+      "howToPlay": "Each player draws 7 tiles. Players take turns forming words that connect to existing words on the board. Points are calculated, and the player with the highest total score at the end wins.",
+      "content": "file.pdf"
+    }
+  },
+  {
+    "model": "findgame.game",
+    "pk": 6,
+    "fields": {
+      "name": "Capture the Flag",
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvFY4meChXAj3F8Ze1d6gEwk39uhkX4yaYVw&s",
+      "equipment": "Two flags (or bandanas, cones, etc.), open space for playing.",
+      "category": "Outdoor Game, Team Game",
+      "numberOfPlayers": "6+ (ideally even teams)",
+      "keyFeatures": "Teamwork, strategy, speed, agility.",
+      "tips": "Communicate with your team to coordinate defense and attack strategies. Utilize speed and agility to outmaneuver opponents. Don't forget to defend your own flag while trying to capture the other team's flag.",
+      "recommendedAges": "6+",
+      "description": "Two teams try to capture each other's flag, located at opposite ends of the playing area, and return it to their own base without getting tagged.",
+      "howToPlay": "Divide into two teams. Each team hides their flag. Players can tag opponents on their side of the field to send them to \"jail.\" The first team to capture the opponent's flag and return it to their base wins.",
+      "content": "file.pdf"
+    }
+  },
+  {
+    "model": "findgame.game",
+    "pk": 7,
+    "fields": {
+      "name": "Trivial Pursuit",
+      "picture": "https://i0.wp.com/nowthatsthrifty.com/wp-content/uploads/2020/02/Harry-Potter-Trivial-Pursuit-Board-scaled.jpg?w=1800&ssl=1",
+      "equipment": "Trivial Pursuit game board, question cards, die, playing pieces, score tracker.",
+      "category": "Trivia Game, Board Game",
+      "numberOfPlayers": "2-6",
+      "keyFeatures": "Trivia knowledge, general knowledge, strategy.",
+      "tips": "Brush up on your trivia knowledge across various categories. Strategically choose which category you attempt based on your strengths. Be the first to collect all six pie pieces and answer a final question correctly to win.",
+      "content": "file.pdf"}
+  }
+]

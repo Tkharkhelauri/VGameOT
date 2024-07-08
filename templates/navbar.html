@@ -1,0 +1,49 @@
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--  <title>Navigation Bar</title>-->
+<!--&lt;!&ndash;  <link rel="stylesheet" href="styles.css">&ndash;&gt;-->
+<!--</head>-->
+<!--<body>-->
+
+  <header>
+    <nav class="navbar">
+      <div class="container">
+        <div class="logo">ვიGAMEოთ</div>
+
+        <ul class="nav-links">
+          <li><a href="{% url 'home' %}">მთავარი</a></li>
+          <li><a href="{% url 'about' %}">ჩვენს შესახებ</a></li>
+          <li><a href="{% url 'contact' %}">კონტაქტი</a></li>
+<!--          <li><a href="#">Profile</a></li>-->
+        </ul>
+
+        <form class="search-bar" role="search" action="">
+          <input name = "q" type="text" placeholder=" იპოვე თამაში.. " aria-label="search">
+          <button type="submit">ძებნა</button>
+        </form>
+
+        {% if request.user.is_authenticated %}
+
+          <div class="profile-container">
+            <img src="data:image/png;base64,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" alt="Profile" class="profile-icon" id="profileIcon">
+            <div id="profileDropdown" class="dropdown-content">
+<!--              <a href="#">Home</a>-->
+              <a href="{% url 'profile' request.user.id %}">ჩემი თამაშები</a>
+              <a href="#">პროფილის გვერდი</a>
+              <a href="#">გამოსვლა</a>
+            </div>
+          </div>
+          {% else %}
+          <div class="sign-in-container">
+              <a href="#" class="sign-in-button">შესვლა</a>
+          </div>
+
+        {% endif %}
+
+      </div>
+    </nav>
+  </header>
+
+<!--</body>-->
+<!--</html>-->

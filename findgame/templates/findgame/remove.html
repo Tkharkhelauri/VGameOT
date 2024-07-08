@@ -1,0 +1,14 @@
+{% extends 'main.html' %}
+
+{% block title %} <title>Remove Game</title> {% endblock %}
+
+{% block content %}
+
+<form method="POST" action="">
+  {% csrf_token %}
+  <p>დარწმუნებული ხარ, რომ გსურს შენი თამაშებიდან წაშალო <strong>{{ game }}</strong>?</p>
+  <input type="submit" value="Remove">
+</form>
+
+
+{% endblock %}

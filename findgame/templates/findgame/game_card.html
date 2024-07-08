@@ -1,0 +1,80 @@
+    <br>
+    <div>
+        <h1 id="unique" class="new">{{ heading }}</h1>
+    </div>
+    <hr>
+    <br>
+    <div class="gamesdiv">
+        {% load static %}
+<!--    <div class="gamesContainer"-->
+        {% for game in games %}
+
+        <div class="card">
+            <div class="card-image">
+                <img src="{{ game.picture }}" alt="{{ game.name }}">
+            </div>
+
+            <div class="card-content">
+                <div class="card-header">
+                    <h2 class="card-title">{{ game.name }}</h2>
+                </div>
+
+                <div class="card-details">
+                    <div class="detail-section">
+                        <h6>მოთამაშეთა რაოდენობა:</h6>
+                        <p>{{ game.numberOfPlayers }}</p>
+                    </div>
+                    <div class="detail-section">
+                        <h6>აღჭურვილობა:</h6>
+                        <p>{{ game.equipment }}</p>
+                    </div>
+                    <div class="detail-section">
+                        <h6>ასაკობრივი ჯგუფი:</h6>
+                        <p>{{ game.recommendedAges }}</p>
+                    </div>
+                    <div class="detail-section">
+                        <h6>კატეგორია:</h6>
+
+                            {% for category in game.category.all %}
+                                <p>{{ category.name }}</p>
+                            {% endfor %}
+                    </div>
+                    <div class="card_buttons">
+
+                        <a href="#" class="button color7">ჩამოტვირთე</a>
+                        {% if request.user.is_authenticated %}
+                            {% if game in request.user.games.all %}
+                            <a href="{% url 'remove' game.id %}" class="button color7">წაშლა</a>
+                            {% else %}
+                            <a href="{% url 'adding' game.id %}" class="button color7">❤</a>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                </div>
+                <a href="{% url 'game_description' game.id %}" class="more-button">More...</a>
+
+
+<!--                <div class="card-body">-->
+<!--                    <h3>უნარები:</h3>-->
+<!--                    <p>{{ game.keyFeatures }}</p>-->
+
+<!--                    <h3>როგორ ვითამაშოთ:</h3>-->
+<!--                    <p>{{ game.howToPlay |slice:":50"}}</p>-->
+
+<!--                    <h3>რჩევები:</h3>-->
+<!--                    <p>{{ game.tips }}</p>-->
+
+<!--                    <h3>მიზანი:</h3>-->
+<!--                    <p>{{ game.description |slice:":150"}}</p>-->
+
+<!--                    <div class="card_buttons">-->
+<!--                        <a href="{% static game.pdf_file %}" class="button">ჩამოტვირთე</a>-->
+<!--                        <a href="{% static game.pdf_file %}" class="button">❤დამატება</a>-->
+<!--                        <a href="{% static game.pdf_file %}" class="button">წაშლა</a>-->
+<!--                    </div>-->
+<!--                </div>-->
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
