@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from .models import Game, User, Age, Category
 from django.db.models import Q
+from django.contrib.auth import authenticate, login, logout
 
 
 def home(request):
@@ -20,7 +21,7 @@ def home(request):
 
 def game_description(request, id):
     game = Game.objects.get(id=id)
-    return render(request, 'game_description.html', {'game': game})
+    return render(request, 'findgame/game_description.html', {'game': game})
 
 
 def about(request):
@@ -66,3 +67,37 @@ def remove(request, id):
         return redirect('profile', request.user.id)
 
     return render(request, 'findgame/remove.html', {"game": game})
+
+
+def login_(request):
+    page = 'login'
+    if request.user.is_authenticated:
+        return redirect('home')
+
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        try:
+            user = User.objects.get(username=username)
+        except:
+            pass # შეცდომა
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect('home')
+
+    context = {'page': page}
+    return render(request, 'findgame/login.html', context) #
+
+
+def logout_(request):
+    logout(request)
+    return redirect('home')
+
+
+def register_(request):
+    context = {}
+    return render(request, 'findgame/register.html', context)

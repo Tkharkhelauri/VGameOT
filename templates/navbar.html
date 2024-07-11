@@ -31,12 +31,12 @@
 <!--              <a href="#">Home</a>-->
               <a href="{% url 'profile' request.user.id %}">ჩემი თამაშები</a>
               <a href="#">პროფილის გვერდი</a>
-              <a href="#">გამოსვლა</a>
+              <a href="{% url 'logout' %}">გამოსვლა</a>
             </div>
           </div>
           {% else %}
           <div class="sign-in-container">
-              <a href="#" class="sign-in-button">შესვლა</a>
+              <a href="{% url 'login' %}" class="sign-in-button">შესვლა</a>
           </div>
 
         {% endif %}

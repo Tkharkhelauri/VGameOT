@@ -1,26 +1,6 @@
 
-
-<!--<nav class="lower-navbar">-->
-<!--      <ul>-->
-<!--        <li class="color1"><a href="#">კატეგორია 1</a></li>-->
-<!--        <li class="color2"><a href="#">კატეგორია 2</a></li>-->
-<!--        <li class="color3"><a href="#">კატეგორია 3</a></li>-->
-<!--        <li class="color1"><a href="#">კატეგორია 4</a></li>-->
-<!--        <li class="color2"><a href="#">კატეგორია 5</a></li>-->
-<!--        <li class="color3"><a href="#">კატეგორია 6</a></li>-->
-<!--        <li class="color4"><a href="#">კატეგორია 7</a></li>-->
-<!--        <li class="color5"><a href="#">კატეგორია 8</a></li>-->
-<!--        <li class="color1"><a href="#">კატეგორია 9</a></li>-->
-<!--        <li class="color2"><a href="#">კატეგორია 10</a></li>-->
-<!--        <li class="color3"><a href="#">კატეგორია 11</a></li>-->
-<!--        <li class="color4"><a href="#">კატეგორია 12</a></li>-->
-<!--        <li class="color6"><a href="#">კატეგორია 13</a></li>-->
-<!--&lt;!&ndash;        <li class="color1"><a href="#">კატეგორია 14</a></li>&ndash;&gt;-->
-<!--      </ul>-->
-<!--    </nav>-->
-
 <nav class="lower-navbar">
-    <a href="{{ request.path }}">ყველა თამაში</a>
+    <a id="lower-navbar-all" href="{{ request.path }}">ყველა თამაში</a>
     <ul>
 <!--        <li class="color6"></li> &lt;!&ndash; ითვლის სულ რამდენი თამაშია&ndash;&gt;-->
     {% for category in categories %}

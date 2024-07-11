@@ -2,12 +2,22 @@
 body {
   font-family: sans-serif;
   margin: 0;
+  background-image: url(.static/files/toys-wallpaper.jpg);
+  background-size: cover;
+  background-position: center;
+
+}
+body .centered-heading{
+    text-align: center;
 }
 
+#unique.new {
+    color: #ffa62f;
+}
 .navbar {
   background-color: #FFA62F;
   color: white;
-  padding: 15px;
+  padding: 5px;
 }
 
 .container {
@@ -77,9 +87,10 @@ body {
 
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
+  border-radius: 15px;
   display: none;
   position: absolute;
-  background-color: #f9f9f9;
+  background-color: #51a8a0;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1; /* Ensure it's on top */
@@ -94,7 +105,8 @@ body {
 }
 
 .dropdown-content a:hover {
-  background-color: #f1f1f1;
+  background-color: #FFDEAD;
+  border-radius: 10px;
 }
 /* General Card Styling */
 
@@ -246,8 +258,8 @@ p {
 /*lower navbar for categories*/
 
 .lower-navbar {
-  background-color: #f8f8f8; /* Light background color */
-  padding: 15px 0;
+  background-color: #ffffe0; /* Light background color */
+
   text-align: center; /* Center the links */
 }
 
@@ -261,16 +273,22 @@ p {
 .lower-navbar li {
 
   display: inline-block; /* Arrange links horizontally */
-  margin:10px 10px;
-}
 
+}
+#lower-navbar-all {
+  padding: 0;
+  font-size: 1.5rem;
+
+
+}
 .lower-navbar a {
   display: block;
-  margin: 10px;
+
   padding: 10px 20px;
   border-radius: 25px; /* Rounded corners */
   text-decoration: none;
   color: #333; /* Dark text color */
+  font-size: 0.8rem;
 }
 
 /*lower navbar colors*/
@@ -302,9 +320,105 @@ p {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow, optional */
 }
 
-/* Hover Effect (Optional) */
+/* Hover Effect */
 .sign-in-button:hover {
-    background-color: #90CAF9; /* Slightly darker shade on hover */
+    background-color: #90CAF9; /* gets slightly darker */
 }
 
 
+
+/* Login Wrapper (to isolate styles) */
+.login-wrapper {
+  display: flex; /* Center the login container */
+  align-items: center;
+  justify-content: center;
+  background-color: #82a7c4;
+  min-height: 100vh; /* Make the wrapper fill the viewport height */
+}
+
+/* Login Container */
+.login-container {
+  backdrop-filter: blur(10px); /* Glassmorphism blur effect */
+  background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white background */
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  width: 350px; /* Adjust width as needed */
+}
+.login-container {
+  backdrop-filter: blur(10px); /* Glassmorphism blur effect */
+  background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white background */
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  width: 350px; /* Adjust width as needed */
+}
+
+.login-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: white;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  color: white;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+}
+
+.login-button {
+  background-color: #2d4e69;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.login-button:hover {
+  background-color: #0056b3;
+}
+
+.register-link {
+  text-align: center;
+  margin-top: 15px;
+  color: white;
+}
+
+.register-link a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+/* Registration Form  */
+.login-form h2 { /* Change to registration heading */
+  text-align: center;
+  margin-bottom: 20px;
+  color: white;
+}
