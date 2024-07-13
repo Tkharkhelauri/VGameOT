@@ -3,7 +3,6 @@
 {% block title %} <title>ავტორიზაცია</title> {% endblock %}
 
 {% block content %}
-  {% if page == 'login' %}
   <div class="login-wrapper">
   <div class="login-container">
     <div class="login-form">
@@ -32,39 +31,6 @@
     </div>
   </div>
 </div>
-{% else %}
 
-<!--registration code-->
-<div class="login-wrapper">
-  <div class="login-container">
-    <div class="login-form">
-      <h2>რეგისტრაცია</h2>
+{% endblock %}
 
-      <form method="post" action="{% url 'register' %}">
-        {% csrf_token %}
-        <div class="form-group">
-          <label for="username">მომხმარებლის სახელი:</label>
-          <input type="text" id="username" name="username" required>
-        </div>
-        <div class="form-group">
-          <label for="email" >ელ.ფოსტა:</label>
-          <input type="email" id="email" name="email" required>
-        </div>
-        <div class="form-group">
-          <label for="password">პაროლი:</label>
-          <input type="password"  name="password" required>
-        </div>
-        <div class="form-group">
-          <label for="confirm_password">გაიმეორეთ პაროლი:</label>
-          <input type="password" id="confirm_password" name="confirm_password" required>
-        </div>
-        <button type="submit" class="login-button">რეგისტრაცია</button>
-      </form>
-
-      <p class="register-link">ანგარიში უკვე გაქვთ? <a href="{% url 'login'%}">შესვლა</a></p>
-    </div>
-  </div>
-</div>
-
-{% endif %}
-{% endblock %}tml>

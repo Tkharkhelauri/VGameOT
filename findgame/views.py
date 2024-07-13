@@ -4,7 +4,8 @@ from django.http import HttpResponse
 from .models import Game, User, Age, Category
 from django.db.models import Q
 from django.contrib.auth import authenticate, login, logout
-
+from django.contrib.auth.decorators import login_required
+from .forms import AppUserCreationForm
 
 def home(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ""
@@ -59,6 +60,7 @@ def adding(request, id):
     return redirect('profile', user.id)
 
 
+# @login_required(Login_url='login')
 def remove(request, id):
     game = Game.objects.get(id=id)
 
@@ -70,7 +72,7 @@ def remove(request, id):
 
 
 def login_(request):
-    page = 'login'
+    # page = 'login'
     if request.user.is_authenticated:
         return redirect('home')
 
@@ -89,8 +91,8 @@ def login_(request):
             login(request, user)
             return redirect('home')
 
-    context = {'page': page}
-    return render(request, 'findgame/login.html', context) #
+    # context = {'page': page}
+    return render(request, 'findgame/login.html') # , context
 
 
 def logout_(request):
@@ -99,5 +101,18 @@ def logout_(request):
 
 
 def register_(request):
-    context = {}
+    form = AppUserCreationForm()
+
+    if request.method == 'POST':
+        form = AppUserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False) #ეგრევე მონაცემთა ბაზაში არ ვუშვებთ
+            user.username = user.username.lower()
+            user.save()
+            login(request, user)
+            return redirect('home')
+
+
+
+    context = {'form': form}
     return render(request, 'findgame/register.html', context)

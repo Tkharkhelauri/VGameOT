@@ -1,6 +1,6 @@
 
 <nav class="lower-navbar">
-    <a id="lower-navbar-all" href="{{ request.path }}">ყველა თამაში</a>
+    <a id="lower-navbar-all" href="{% url 'home' %}">ყველა თამაში</a>
     <ul>
 <!--        <li class="color6"></li> &lt;!&ndash; ითვლის სულ რამდენი თამაშია&ndash;&gt;-->
     {% for category in categories %}
