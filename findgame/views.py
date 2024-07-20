@@ -5,7 +5,8 @@ from .models import Game, User, Age, Category
 from django.db.models import Q
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from .forms import AppUserCreationForm
+from .forms import AppUserCreationForm, GameForm
+
 
 def home(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ""
@@ -112,7 +113,35 @@ def register_(request):
             login(request, user)
             return redirect('home')
 
-
-
     context = {'form': form}
     return render(request, 'findgame/register.html', context)
+
+
+def add_game(request):
+    ages = Age.objects.all()
+    categories = Category.objects.all()
+    form = GameForm()
+
+    if request.method == "POST":
+        game_age = request.POST.get('age')
+        age, created = Age.objects.get_or_create(age=game_age)
+
+        game_category = request.POST.get('category')
+        category, created = Category.objects.get_or_create(name=game_category)
+
+        form = GameForm(request.POST, request.FILES)  # Pass files to the form
+
+        new_game = Game(picture=request.FILES['picture'], name=form.data['name'], recommendedAges=age, equipment=form.data['equipment'],
+                        numberOfPlayers=form.data['numberOfPlayers'], keyFeatures=form.data['keyFeatures'], tips=form.data['tips'],
+                        description=form.data['description'], howToPlay=form.data['howToPlay'], content=request.FILES['content'])
+
+        new_game.save()  # Now save
+        new_game.category.add(category)  # Add the category after saving
+
+        return redirect('home')
+
+    context = {'form': form, 'ages': ages, 'categories': categories}
+    return render(request, 'findgame/add_game.html', context)
+
+
+

@@ -20,16 +20,16 @@ class Category(models.Model):
 
 class Game(models.Model):
     name = models.CharField(max_length=200)
-    picture = models.CharField(max_length=400)
+    picture = models.ImageField(null=True, blank=True)
     equipment = models.CharField(max_length=200)
     category = models.ManyToManyField(Category, blank=True, related_name='games') #Many To Many
     recommendedAges = models.ForeignKey(Age, on_delete=models.PROTECT) #One To Many
     numberOfPlayers = models.CharField(max_length=200)
-    keyFeatures = models.CharField(max_length=200)
+    keyFeatures = models.CharField(max_length=2000)
     tips = models.CharField(max_length=500)
     description = models.TextField(max_length=2000)
     howToPlay = models.TextField(max_length=20000)
-    content = models.CharField(max_length=200)
+    content = models.FileField(null=True)
 
     def __str__(self):
         return self.name

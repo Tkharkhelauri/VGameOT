@@ -12,7 +12,7 @@
 
         <div class="card">
             <div class="card-image">
-                <img src="{{ game.picture }}" alt="{{ game.name }}">
+                <img src="{{ game.picture.url }}" alt="{{ game.name }}">
             </div>
 
             <div class="card-content">
@@ -52,28 +52,8 @@
                         {% endif %}
                     </div>
                 </div>
-                <a href="{% url 'game_description' game.id %}" class="more-button">More...</a>
+                <a href="{% url 'game_description' game.id %}" class="more-button">ვრცლად...</a>
 
-
-<!--                <div class="card-body">-->
-<!--                    <h3>უნარები:</h3>-->
-<!--                    <p>{{ game.keyFeatures }}</p>-->
-
-<!--                    <h3>როგორ ვითამაშოთ:</h3>-->
-<!--                    <p>{{ game.howToPlay |slice:":50"}}</p>-->
-
-<!--                    <h3>რჩევები:</h3>-->
-<!--                    <p>{{ game.tips }}</p>-->
-
-<!--                    <h3>მიზანი:</h3>-->
-<!--                    <p>{{ game.description |slice:":150"}}</p>-->
-
-<!--                    <div class="card_buttons">-->
-<!--                        <a href="{% static game.pdf_file %}" class="button">ჩამოტვირთე</a>-->
-<!--                        <a href="{% static game.pdf_file %}" class="button">❤დამატება</a>-->
-<!--                        <a href="{% static game.pdf_file %}" class="button">წაშლა</a>-->
-<!--                    </div>-->
-<!--                </div>-->
             </div>
         </div>
 

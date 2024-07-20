@@ -1,0 +1,80 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+    <h1>დაამატე თამაში</h1>
+    <form action="" method="POST" enctype="multipart/form-data"> <!--ამის გარეშე ვერ მივიღებთ ფაილებს პითონში-->
+        {% csrf_token %}
+        <div>
+            <label>თამაშის სურათი</label>
+            <br>
+            {{ form.picture }}
+        </div>
+        <div>
+            <label>თამაშის სახელი</label>
+            <br>
+            {{ form.name }}
+        </div>
+        <div>
+            <label>აღჭურვილობა:</label>
+            <br>
+            {{ form.equipment }}
+        </div>
+        <div>
+            <label for="game_age">ასაკი:</label>
+            <br>
+            <input required type="text" name="age" list="age-list">
+            <datalist id="age-list">
+                {%  for age in ages  %}
+                    <select id="game_age">
+                        <option value="{{ age.age }}">{{ age.age }}</option>
+                    </select>
+                {%  endfor  %}
+            </datalist>
+        </div>
+        <div>
+            <label for="game_category">კატეგორია:</label>
+            <br>
+            <input required type="text" name="category" list="category-list">
+            <datalist id="category-list">
+                {%  for category in categories  %}
+                    <select id="game_category">
+                        <option value="{{ category.name }}">{{ category.name }}</option>
+                    </select>
+                {%  endfor  %}
+            </datalist>
+        </div>
+        <div>
+            <label>მოთამაშეთა რაოდენობა:</label>
+            <br>
+            {{ form.numberOfPlayers }}
+        </div>
+        <div>
+            <label>უნარები:</label>
+            <br>
+            {{ form.keyFeatures }}
+        </div>
+         <div>
+            <label>მიზანი:</label>
+            <br>
+            {{ form.description }}
+        </div>
+        <div>
+            <label>როგორ ვითამაშოთ:</label>
+            <br>
+            {{ form.howToPlay }}
+        </div>
+        <div>
+            <label>რჩევები:</label>
+            <br>
+            {{ form.tips }}
+        </div>
+        <div>
+            <label>ატვირთე PDF:</label>
+            <br>
+            {{ form.content }}
+        </div>
+        <br>
+        <input type="submit" value="Upload">
+    </form>
+{% endblock %}
