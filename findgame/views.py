@@ -5,15 +5,20 @@ from .models import Game, User, Age, Category
 from django.db.models import Q
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from .forms import AppUserCreationForm, GameForm
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+
+from .forms import AppUserCreationForm, GameForm, UserForm
+from .seeder import seeder_func
+from django.contrib import messages
 
 
 def home(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ""
-
+    seeder_func()
     # games = Game.objects.all() #ეს გამოაჩენს ყველა თამაშს, მაგრმ მინდა რომ დაფილტროს
     games = Game.objects.filter(Q(name__icontains=q) | Q(description__icontains=q) | Q(category__name__icontains=q)) #icontains - რეგისტრს არ აქვს მნიშვნელობა
-    games = list(set(games))
+    games = list(dict.fromkeys(games))
     categories = Category.objects.all()
     # print(games[0].users.all()) საშუალებას მაძლევს მაგალითად გავიგო რომელიმე თამაში რამდენ user-ს აქვს არჩეული
     heading = "რა ვითამაშოთ???"
@@ -61,7 +66,7 @@ def adding(request, id):
     return redirect('profile', user.id)
 
 
-# @login_required(Login_url='login')
+@login_required(login_url='login')
 def remove(request, id):
     game = Game.objects.get(id=id)
 
@@ -84,16 +89,19 @@ def login_(request):
         try:
             user = User.objects.get(username=username)
         except:
-            pass # შეცდომა
+            # pass # შეცდომა
+            messages.error(request,'მომხმარებლის სახელი არ არსებობს!')
 
         user = authenticate(request, username=username, password=password)
 
         if user is not None:
             login(request, user)
             return redirect('home')
+        else:
+            messages.error(request, 'მომხმარებელი ან პაროლი არასწორია!')
 
     # context = {'page': page}
-    return render(request, 'findgame/login.html') # , context
+    return render(request, 'findgame/login.html')  # , context
 
 
 def logout_(request):
@@ -133,10 +141,12 @@ def add_game(request):
 
         new_game = Game(picture=request.FILES['picture'], name=form.data['name'], recommendedAges=age, equipment=form.data['equipment'],
                         numberOfPlayers=form.data['numberOfPlayers'], keyFeatures=form.data['keyFeatures'], tips=form.data['tips'],
-                        description=form.data['description'], howToPlay=form.data['howToPlay'], content=request.FILES['content'])
+                        description=form.data['description'], howToPlay=form.data['howToPlay'], content=request.FILES['content'],
+                        creator=request.user)
 
-        new_game.save()  # Now save
-        new_game.category.add(category)  # Add the category after saving
+        if not (Game.objects.filter(content=new_game.content) or Game.objects.filter(name=new_game.name)):
+            new_game.save()  # Now save
+            new_game.category.add(category)  # Add the category after saving
 
         return redirect('home')
 
@@ -144,4 +154,30 @@ def add_game(request):
     return render(request, 'findgame/add_game.html', context)
 
 
+def reading(request, id):
+    game = Game.objects.get(id=id)
+    return render(request, 'findgame/reading.html', {'game': game})
 
+
+def delete_game(request, id):
+    game = Game.objects.get(id=id)
+    if request.method == 'POST':
+        game.picture.delete()
+        game.content.delete()
+        game.delete()
+        return redirect('home')
+    return render(request, 'findgame/remove.html', {'game': game})
+
+
+@login_required(login_url='login')
+def update_user(request):
+    user = request.user
+    form = UserForm(instance=user)
+
+    if request.method == "POST":
+        form = UserForm(request.POST, request.FILES, instance=user)
+        if form.is_valid():
+            form.save()
+            return redirect('profile', user.id)
+
+    return render(request, 'findgame/update_user.html', {'form': form})

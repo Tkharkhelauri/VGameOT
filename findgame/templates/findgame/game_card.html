@@ -42,13 +42,18 @@
                     </div>
                     <div class="card_buttons">
 
-                        <a href="#" class="button color7">ჩამოტვირთე</a>
+                        <a href="{% url 'reading' game.id %}" class="button color7">ჩამოტვირთე</a>
                         {% if request.user.is_authenticated %}
                             {% if game in request.user.games.all %}
-                            <a href="{% url 'remove' game.id %}" class="button color7">წაშლა</a>
+                                <a href="{% url 'remove' game.id %}" class="button color7">დაბრუნება</a>
                             {% else %}
-                            <a href="{% url 'adding' game.id %}" class="button color7">❤</a>
+                                <a href="{% url 'adding' game.id %}" class="button color7">❤</a>
                             {% endif %}
+
+                            {% if request.user == game.creator %}
+                                <a href="{% url 'delete_game' game.id %}" class="button color7">წაშლა</a>
+                            {% endif %}
+
                         {% endif %}
                     </div>
                 </div>

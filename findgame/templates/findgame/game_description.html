@@ -7,7 +7,7 @@
         <h1 class="game-title">{{ game.name }}</h1>
 
         <div class="game-image">
-            <img src="{{ game.picture }}" alt="{{ game.name }}">
+            <img src="{{ game.picture.url }}" alt="{{ game.name }}">
         </div>
 
         <div class="details-section">
@@ -29,10 +29,21 @@
             <h3>რჩევები:</h3>
             <p>{{ game.tips }}</p>
         </div>
+        <div class="details-section">
+            <h3>მომხმარებელი:</h3>
+            <p>{{ game.creator }}</p>
+        </div>
+        <div class="details-section">
+            <h3>დამატების დრო:</h3>
+            <p>{{ game.created }}</p>
+        </div>
+        <br>
+
 
         <div class="card_buttons">
             <a href="#" class="button">ჩამოტვირთე</a>
             <a href="#" class="button">❤დამატება</a>
+            <a href="#" class="button">დაბრუნება</a>
             <a href="#" class="button">წაშლა</a>
         </div>
     </div>

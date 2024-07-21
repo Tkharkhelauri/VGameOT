@@ -14,5 +14,7 @@ urlpatterns = [
     path('register/', views.register_, name='register'),
     path('logout/', views.logout_, name='logout'),
     path('upload/', views.add_game, name='upload'),
-
+    path('delete_game/<str:id>', views.delete_game, name='delete_game'),
+    path('reading/<str:id>/', views.reading, name='reading'),
+    path('update_user/', views.update_user, name='update_user')
 ]

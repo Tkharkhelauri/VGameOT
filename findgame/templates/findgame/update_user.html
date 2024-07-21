@@ -1,0 +1,20 @@
+{% extends 'main.html' %}
+
+{% block title %} <title> Update User Page</title> {% endblock %}
+
+{% block content %}
+
+<a href="{{ request.META.HTTP_REFERER }}">Cancel</a>
+        <form method="POST" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% for field in form %}
+                <div>
+                    <label>{{ field.label }}</label>
+                    {{ field }}
+                </div>
+            {% endfor %}
+           <button class="sign-in-button" type="submit">განახლება</button>
+        </form>
+
+
+{% endblock %}

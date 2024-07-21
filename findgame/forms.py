@@ -17,3 +17,10 @@ class GameForm(forms.ModelForm):
     class Meta:
         model = Game
         fields = '__all__'
+
+
+class UserForm(ModelForm):
+    class Meta:
+        model = User
+        fields = ['avatar', 'username', 'email', 'bio', 'games']
+

@@ -1,23 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+
         <meta charset="UTF-8">
         {% block title %}{% endblock %}
         {% load static %}
         <link href="{% static 'styles/styles.css' %}" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian&display=swap" rel="stylesheet">
+
     </head>
 
     <body>
-    <style>
-        body {
-          background-image: url("{% static 'files/toys-wallpaper.jpg' %}");
-          background-size: cover;
-          background-position: center;
-        }
-    </style>
+<!--    <style>-->
+<!--        body {-->
+<!--         -->
+<!--          background-size: cover;-->
+<!--          background-position: center;-->
+<!--        }-->
+<!--    </style>-->
         {% include 'navbar.html' %}
 
         {% include 'lower_navbar.html' %}
+
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
 
         {% block content %}
 

@@ -1,10 +1,14 @@
 
 <nav class="lower-navbar">
-    <a id="lower-navbar-all" href="{% url 'home' %}">ყველა თამაში</a>
+
     <ul>
-<!--        <li class="color6"></li> &lt;!&ndash; ითვლის სულ რამდენი თამაშია&ndash;&gt;-->
+        <li class="color3"><a  href="{% url 'home' %}">ყველა თამაში</a></li>
     {% for category in categories %}
-        <li class="color{% cycle '1' '2' '3' '4' '5' '6' %}"><a href="{{ request.path }}?q={{ category.name }}">{{ category}} ({{ category.games.count }})</a></li>
+        <li class="color{% cycle '1' '2' '3' '4' '5' '6' %}">
+            <a href="{{ request.path }}?q={{ category.name }}">
+            {{ category}} ({{ category.games.count }})
+            </a>
+        </li>
     {% endfor %}
     </ul>
 </nav>
