@@ -3,6 +3,8 @@
 {% block title %} <title>PDF Page</title> {% endblock %}
 
 {% block content %}
+<div class="game-details-container">
+<div class="one-line">
     <h1>{{ game.name }}</h1>
 <!--    <h2>{{ game.category.all }}</h2>  #all სიის მისაღებად-->
     <h2>
@@ -10,8 +12,9 @@
             {{ category }}
         {% endfor %}
     </h2>
+    </div>
     <p>{{ game.description }}</p>
-
+</div>
     {% load static %}
     <br>
     <embed src="{% static game.content.url %}" width="100%" height="800vh">

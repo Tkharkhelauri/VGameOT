@@ -1,20 +1,31 @@
 {% extends 'main.html' %}
 
-{% block title %} <title> Update User Page</title> {% endblock %}
+{% block title %} <title>Update User Page</title> {% endblock %}
 
 {% block content %}
+<div class="update-user-container">
 
-<a href="{{ request.META.HTTP_REFERER }}">Cancel</a>
-        <form method="POST" action="" enctype="multipart/form-data">
-            {% csrf_token %}
-            {% for field in form %}
-                <div>
-                    <label>{{ field.label }}</label>
-                    {{ field }}
-                </div>
-            {% endfor %}
-           <button class="sign-in-button" type="submit">განახლება</button>
-        </form>
+    <form method="POST" action="" enctype="multipart/form-data">
+        {% csrf_token %}
 
+        {% if user.avatar %}
+            <div class="form-group">
+                <img src="{{ user.avatar.url }}" alt="User Avatar" style="max-width: 100px;">
+            </div>
+        {% endif %}
 
+        {% for field in form %}
+            <div class="form-group">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+                {% if field.errors %}
+                    <div class="error">{{ field.errors }}</div>
+                {% endif %}
+            </div>
+        {% endfor %}
+
+        <button class="sign-in-button" type="submit">განახლება</button>
+        <a class="sign-in-button" href="{{ request.META.HTTP_REFERER }}">გაუქმება</a>
+    </form>
+</div>
 {% endblock %}

@@ -16,5 +16,7 @@ urlpatterns = [
     path('upload/', views.add_game, name='upload'),
     path('delete_game/<str:id>', views.delete_game, name='delete_game'),
     path('reading/<str:id>/', views.reading, name='reading'),
-    path('update_user/', views.update_user, name='update_user')
+    path('update_user/', views.update_user, name='update_user'),
+    path('delete_comment/<str:id>', views.delete_comment, name='delete_comment')
+
 ]

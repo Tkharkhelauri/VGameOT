@@ -6,20 +6,21 @@
         {% block title %}{% endblock %}
         {% load static %}
         <link href="{% static 'styles/styles.css' %}" rel="stylesheet">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="{% static 'styles/base.css' %}" rel="stylesheet">
+        <link href="{% static 'styles/cards.css' %}" rel="stylesheet">
+        <link href="{% static 'styles/navbar.css' %}" rel="stylesheet">
+        <link href="{% static 'styles/forms.css' %}" rel="stylesheet">
+        <link href="{% static 'styles/utils.css' %}" rel="stylesheet">
+        <link href="{% static 'styles/buttons.css' %}" rel="stylesheet">
+        <link href="{% static 'styles/hamburger.css' %}" rel="stylesheet">
+        <link href="{% static 'styles/description.css' %}" rel="stylesheet">
+
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian&display=swap" rel="stylesheet">
 
     </head>
 
-    <body>
-<!--    <style>-->
-<!--        body {-->
-<!--         -->
-<!--          background-size: cover;-->
-<!--          background-position: center;-->
-<!--        }-->
-<!--    </style>-->
+    <body id="body">
+
         {% include 'navbar.html' %}
 
         {% include 'lower_navbar.html' %}
@@ -37,5 +38,6 @@
         {% endblock %}
 
     <script src="{% static 'js/script.js' %}"></script>
+<!--    <script src="{% static 'js/apps.js' %}"></script>-->
     </body>
 </html>

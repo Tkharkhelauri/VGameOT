@@ -1,0 +1,146 @@
+:root {
+	--color-dark-01: 210, 11%, 7%;
+	--color-dark-02: 210, 7%, 11%;
+	--color-gray: 212, 6%, 46%;
+	--color-light-orange: 40, 89%, 69%;
+	--color-light-green: 143, 40%, 82%;
+	--color-offwhite: 34, 89%, 96%;
+	--color-crimson: 9, 80%, 65%;
+
+	--duration: 0.4s;
+	--ease: cubic-bezier(0.45, 0.05, 0.55, 0.95);
+
+	--heading-1: 1.8rem, 1.6rem + 0.5vw, 2rem;
+	--lh-default: 1.5;
+
+	--ff-primary: 'DM Sans';
+	--ff-fallback: sans-serif;
+
+	--rounded-xs: 0.4rem;
+	--rounded-sm: 1rem;
+
+	--spacer-xs: 1rem;
+	--spacer-sm: 2rem;
+
+	--spacer-grid: 2rem;
+
+	--shadow-default: 0px 4px 16px rgba(17, 17, 26, 0.1),
+		0px 8px 32px rgba(17, 17, 26, 0.051);
+}
+/* General Styling */
+body {
+    font-family: 'Noto Sans Georgian', serif;
+    margin: 0;
+    background-color: #051c2f; /* Dark background */
+    color: #fff; /* Default text color to white for contrast */
+}
+
+/* Typography */
+h1, h2, h3, p {
+    margin: 0; /* Reset default margins */
+}
+
+h1 { /* Main Heading style */
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+}
+
+h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+p {
+    font-size: 1rem;
+    line-height: 1.6; /* Improved readability */
+}
+a {
+    text-decoration: none;
+    color: white;
+}
+/* Utility Classes */
+.centered-heading {
+    text-align: center;
+}
+*/
+.container {
+    display: flex; /* Enable flexbox for the container */
+    justify-content: center; /* Center the grid horizontally */
+    margin-bottom: 50px;
+}
+.grid {
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr)); /* Wider cards */
+    gap: var(--spacer-grid);
+    width: 90%; /* Limit grid width to 90% of container */
+}
+
+.flex { /* Flexbox utility */
+    display: flex;
+}
+/* Update User Page Styles */
+
+.update-user-container {
+    max-width: 600px; /* Adjust as needed */
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: var(--shadow-default);
+}
+
+.update-user-container a { /* Style for the "Cancel" link */
+    display: inline-block;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #ccc; /* Gray background */
+    color: #333;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.update-user-container a:hover {
+    background-color: #bbb; /* Slightly darker on hover */
+}
+
+.update-user-container form div { /* Style for each form field container */
+    margin-bottom: 1rem;
+}
+
+.update-user-container label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.update-user-container input[type="text"],
+.update-user-container input[type="password"],
+.update-user-container input[type="email"],
+.update-user-container textarea { /* Style for input fields and textareas */
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.update-user-container button[type="submit"] { /* Style for the submit button */
+    /* You can reuse the .sign-in-button styles here or create new ones */
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: #4CAF50; /* Green */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+.update-user-container button[type="submit"]:hover {
+    background-color: #3e8e41; /* Darker green on hover */
+}

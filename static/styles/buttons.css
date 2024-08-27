@@ -1,0 +1,15 @@
+
+.btn {
+    display: flex;
+    justify-content: space-around; /* Distribute evenly */
+    /* or use justify-content: space-between; for maximum spacing */
+    align-items: center;
+    gap: 0.5rem; /* Optional: Add space between buttons */
+    margin-top: 1rem;
+}
+
+.more-button{
+    display: flex; /* Center the button horizontally */
+    justify-content: center;
+    margin-top: 0.5rem;
+}

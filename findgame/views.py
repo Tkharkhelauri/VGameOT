@@ -1,14 +1,15 @@
+from django.contrib.auth.forms import PasswordChangeForm
 from django.shortcuts import render, redirect
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
-from .models import Game, User, Age, Category
+from .models import Game, User, Age, Category, Comment
 from django.db.models import Q
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 
-from .forms import AppUserCreationForm, GameForm, UserForm
+from .forms import AppUserCreationForm, UserChangeForm, GameForm, UserForm, UserUpdateForm
 from .seeder import seeder_func
 from django.contrib import messages
 
@@ -28,8 +29,28 @@ def home(request):
 
 def game_description(request, id):
     game = Game.objects.get(id=id)
-    return render(request, 'findgame/game_description.html', {'game': game})
 
+    game_comments = game.comment_set.all().order_by('-created')
+    if request.method == 'POST':
+        comment = Comment.objects.create(
+            user=request.user,
+            game=game,
+            body=request.POST.get('body')
+        )
+    context = {
+        'game': game,
+        'comments': game_comments
+    }
+    return render(request, 'findgame/game_description.html', context)
+
+
+def delete_comment(request, id):
+    comment = Comment.objects.get(id=id)
+    game = comment.game
+    if request.method == 'POST':
+        comment.delete()
+        return redirect('reading', game.id)
+    return render(request, 'findgame/del-comment.html', {'obj': comment})
 
 def about(request):
     return render(request, 'findgame/about.html')
@@ -166,7 +187,7 @@ def delete_game(request, id):
         game.content.delete()
         game.delete()
         return redirect('home')
-    return render(request, 'findgame/remove.html', {'game': game})
+    return render(request, 'findgame/del-game.html', {'game': game})
 
 
 @login_required(login_url='login')
@@ -174,7 +195,7 @@ def update_user(request):
     user = request.user
     form = UserForm(instance=user)
 
-    if request.method == "POST":
+    if request.method == 'POST':
         form = UserForm(request.POST, request.FILES, instance=user)
         if form.is_valid():
             form.save()

@@ -30,7 +30,7 @@
             <p>{{ game.tips }}</p>
         </div>
         <div class="details-section">
-            <h3>მომხმარებელი:</h3>
+            <h3>თამაშის ამტვირთველი:</h3>
             <p>{{ game.creator }}</p>
         </div>
         <div class="details-section">
@@ -40,12 +40,44 @@
         <br>
 
 
-        <div class="card_buttons">
-            <a href="#" class="button">ჩამოტვირთე</a>
-            <a href="#" class="button">❤დამატება</a>
-            <a href="#" class="button">დაბრუნება</a>
-            <a href="#" class="button">წაშლა</a>
+        <div class="card_buttons flex items-center space-between">
+                <a href="{% url 'reading' game.id %}" class="btn">ჩამოტვირთე</a>
+                {% if request.user.is_authenticated %}
+                    {% if game in request.user.games.all %}
+                        <a href="{% url 'remove' game.id %}" class="btn">დაბრუნება</a>
+                    {% else %}
+                        <a href="{% url 'adding' game.id %}" class="btn">❤</a>
+                    {% endif %}
+                    {% if request.user == game.creator %}
+                        <a href="{% url 'delete_game' game.id %}" class="btn">წაშლა</a>
+                    {% endif %}
+                {% endif %}
         </div>
+        <div>
+            <h2>კომენტარები:</h2>
+            <form method="POST" action="">
+                {% csrf_token %}
+                <input name="body" placeholder="Type Message...">
+            </form>
+            <br>
+            {% for comment in comments %}
+                <div>
+                    <a href="{% url 'profile' comment.user.id %}">
+                            <img src="{{ comment.user.avatar.url }}" width="50px" height="50px" style="border-radius: 50%">
+                            <span>@{{ comment.user.username }}</span>
+                    </a>
+                    <span>{{ comment.created | timesince }} ago</span>
+                </div>
+                <div style="margin-left: 60px;">
+                    <p>{{ comment.body }}</p>
+                    {% if request.user == comment.user %}
+                            <a href="{% url 'delete_comment' comment.id %}">წაშლა</a>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+
+
     </div>
 
 

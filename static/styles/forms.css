@@ -1,0 +1,76 @@
+/* Registration Form  */
+.login-form h2 { /* Change to registration heading */
+  text-align: center;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.one-line {
+  display: flex; /* Center the login container */
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+/* Update User Page Styles */
+
+.update-user-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: transparent;
+    outline: 1px solid hsl(var(--color-light-orange));
+    outline-offset: 0.7rem;
+}
+
+.update-user-container .login-form {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.update-user-container .form-group {
+    margin-bottom: 1rem;
+}
+
+.update-user-container label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+.update-user-container input[type="text"],
+.update-user-container input[type="email"],
+.update-user-container textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.update-user-container button[type="submit"],
+.update-user-container a.sign-in-button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+.update-user-container button[type="submit"]:hover,
+.update-user-container a.sign-in-button:hover {
+    background-color: #3e8e41;
+}
+
+.update-user-container .error {
+    color: red;
+    margin-top: 0.5rem;
+}

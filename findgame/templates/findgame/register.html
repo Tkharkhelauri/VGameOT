@@ -1,26 +1,35 @@
-
 {% extends 'main.html' %}
 
 {% block title %} <title>რეგისტრაცია</title> {% endblock %}
 
 {% block content %}
-
 <div class="login-wrapper">
     <div class="login-container">
         <div class="login-form">
-            <h2 class="register-form-heading">რეგისტრაცია</h2>
+            <h2>რეგისტრაცია</h2>
 
             <form method="post" action="{% url 'register' %}">
                 {% csrf_token %}
-                {{ form.as_p }}
-
-                <button type="submit" class="login-button" value="Register">რეგისტრაცია</button>
+                {% for field in form %}
+                    <div class="form-group">
+                        <label for="{{ field.id_for_label }}">
+                            {% if field.label == 'Username' %}მომხმარებლის სახელი{% endif %}
+                            {% if field.label == 'Email address' %}ელ. ფოსტა{% endif %}
+                            {% if field.label == 'Password' %}პაროლი{% endif %}
+                            {% if field.label == 'Password confirmation' %}გაიმეორეთ პაროლი{% endif %}
+                            {% if field.label == 'Avatar' %}ავატარი (არასავალდებულო){% endif %}
+                        </label>
+                        {{ field }}
+                        {% if field.errors %}
+                            <div class="error">{{ field.errors }}</div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                <button type="submit" class="login-button">რეგისტრაცია</button>
             </form>
-
-            <p class="register-link">ანგარიში უკვე გაქვთ? <a href="{% url 'login' %}">შესვლა</a></p>
+            <p class="register-link">უკვე გაქვთ ანგარიში? <a href="{% url 'login'%}">      შესვლა</a></p>
         </div>
     </div>
 </div>
-
-
 {% endblock %}
+

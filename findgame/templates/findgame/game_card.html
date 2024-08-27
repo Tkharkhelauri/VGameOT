@@ -1,66 +1,70 @@
+           {% load static %}
     <br>
 
     <div class="centered-heading">
         <h1 id="unique" class="new">{{ heading }}</h1>
     </div>
-    <hr>
+
     <br>
-    <div class="gamesdiv">
-        {% load static %}
-<!--    <div class="gamesContainer"-->
+<div class="container">
+    <div class="grid">
+
         {% for game in games %}
 
-        <div class="card">
-            <div class="card-image">
-                <img src="{{ game.picture.url }}" alt="{{ game.name }}">
+        <div class="grid__item">
+        <div class="card" tabindex="0">
+
+
+        <div class="card__header relative">
+            <a href="{% url 'game_description' game.id %}" class="more-button">
+            <div class="card__image-container">
+                <img src="{{ game.picture.url }}" alt="{{ game.name }}" class="card__image box-full">
+                <h2 class="card__image-title">{{ game.name }}</h2>
             </div>
-
-            <div class="card-content">
-                <div class="card-header">
-                    <h2 class="card-title">{{ game.name }}</h2>
-                </div>
-
-                <div class="card-details">
-                    <div class="detail-section">
-                        <h6>მოთამაშეთა რაოდენობა:</h6>
-                        <p>{{ game.numberOfPlayers }}</p>
-                    </div>
-                    <div class="detail-section">
-                        <h6>აღჭურვილობა:</h6>
-                        <p>{{ game.equipment }}</p>
-                    </div>
-                    <div class="detail-section">
-                        <h6>ასაკობრივი ჯგუფი:</h6>
-                        <p>{{ game.recommendedAges }}</p>
-                    </div>
-                    <div class="detail-section">
-                        <h6>კატეგორია:</h6>
-
-                            {% for category in game.category.all %}
-                                <p>{{ category.name }}</p>
-                            {% endfor %}
-                    </div>
-                    <div class="card_buttons">
-
-                        <a href="{% url 'reading' game.id %}" class="button color7">ჩამოტვირთე</a>
-                        {% if request.user.is_authenticated %}
-                            {% if game in request.user.games.all %}
-                                <a href="{% url 'remove' game.id %}" class="button color7">დაბრუნება</a>
-                            {% else %}
-                                <a href="{% url 'adding' game.id %}" class="button color7">❤</a>
-                            {% endif %}
-
-                            {% if request.user == game.creator %}
-                                <a href="{% url 'delete_game' game.id %}" class="button color7">წაშლა</a>
-                            {% endif %}
-
-                        {% endif %}
-                    </div>
-                </div>
-                <a href="{% url 'game_description' game.id %}" class="more-button">ვრცლად...</a>
-
-            </div>
+            </a>
         </div>
 
+        <div class="card__content">
+            <div class="card-details">
+                <div class="detail-section">
+                    <h2>მოთამაშეები:</h2>
+                    <p>{{ game.numberOfPlayers }}</p>
+                </div>
+<!--                <div class="detail-section">-->
+<!--                    <h2>აღჭურვილობა:</h2>-->
+<!--                    <p>{{ game.equipment }}</p>-->
+<!--                </div>-->
+                <div class="detail-section">
+                    <h2>ასაკი:</h2>
+                    <p>{{ game.recommendedAges }}</p>
+                </div>
+<!--                <div class="detail-section">-->
+<!--                    <h2>კატეგორია:</h2>-->
+<!--                    {% for category in game.category.all %}-->
+<!--                        <p>{{ category.name }}</p>-->
+<!--                    {% endfor %}-->
+<!--                </div>-->
+            </div>
+
+            <div class="card_buttons flex items-center space-between">
+                <a href="{% url 'reading' game.id %}" class="btn">ჩამოტვირთე</a>
+                {% if request.user.is_authenticated %}
+                    {% if game in request.user.games.all %}
+                        <a href="{% url 'remove' game.id %}" class="btn">დაბრუნება</a>
+                    {% else %}
+                        <a href="{% url 'adding' game.id %}" class="btn">❤</a>
+                    {% endif %}
+                    {% if request.user == game.creator %}
+                        <a href="{% url 'delete_game' game.id %}" class="btn">წაშლა</a>
+                    {% endif %}
+                {% endif %}
+            </div>
+<!--            <a href="{% url 'game_description' game.id %}" class="more-button">ვრცლად...</a>-->
+        </div>
+    </div>
+    </div>
+
+
         {% endfor %}
+    </div>
     </div>

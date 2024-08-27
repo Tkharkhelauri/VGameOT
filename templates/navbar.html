@@ -24,7 +24,8 @@
             <div id="profileDropdown" class="dropdown-content">
 <!--              <a href="#">Home</a>-->
               <a href="{% url 'profile' request.user.id %}">ჩემი თამაშები</a>
-              <a href="{% url 'profile' request.user.id %}">პროფილის გვერდი</a>
+              <a href="{% url 'update_user' %}">პროფილის გვერდი</a>
+              <a href="{% url 'upload' %}">თამაშის ატვირთვა</a>
               <a href="{% url 'logout' %}">გამოსვლა</a>
             </div>
           </div>
@@ -38,4 +39,3 @@
       </div>
     </nav>
   </header>
-

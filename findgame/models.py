@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.forms import ModelForm
+
 
 # Create your models here.
 
@@ -20,12 +22,12 @@ class Category(models.Model):
 
 class Game(models.Model):
     creator = models.ForeignKey('User', on_delete=models.SET("Unknown Creator"))
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=100)
     picture = models.ImageField(null=True, blank=True)
-    equipment = models.CharField(max_length=200)
+    equipment = models.CharField(max_length=100)
     category = models.ManyToManyField(Category, blank=True, related_name='games') #Many To Many
     recommendedAges = models.ForeignKey(Age, on_delete=models.PROTECT) #One To Many
-    numberOfPlayers = models.CharField(max_length=200)
+    numberOfPlayers = models.CharField(max_length=20)
     keyFeatures = models.CharField(max_length=2000)
     tips = models.CharField(max_length=500)
     description = models.TextField(max_length=2000)
@@ -34,9 +36,9 @@ class Game(models.Model):
 
     created = models.DateTimeField(auto_now_add=True)  #შენახვის დრო
     updated = models.DateTimeField(auto_now=True)
+
     class Meta:
         ordering = ['-created']
-
 
     def __str__(self):
         return self.name
@@ -48,5 +50,19 @@ class User(AbstractUser):
     bio = models.TextField(null=True)
     avatar = models.ImageField(null=True, default='avatar.png')
 
+class UserForm(ModelForm):
+    class Meta:
+        model = User
+        fields = ['avatar', 'username', 'email', 'bio', 'games']
 
+class Comment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    game = models.ForeignKey(Game, on_delete=models.CASCADE)
+    body = models.TextField()
+    created = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        ordering = ['-created']
+
+    def __str__(self):
+        return self.body

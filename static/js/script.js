@@ -13,3 +13,12 @@ window.onclick = function(event) {
     }
   }
 }
+
+
+const hamburgerButton = document.querySelector('.hamburger button');
+const navMenu = document.querySelector('.nav-menu');
+
+hamburgerButton.addEventListener('click', () => {
+    navMenu.classList.toggle('visible');
+    hamburgerButton.setAttribute('aria-expanded', navMenu.classList.contains('visible'));
+});

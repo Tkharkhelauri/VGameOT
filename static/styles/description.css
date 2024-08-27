@@ -1,0 +1,54 @@
+/* Game Description Styles */
+
+.game-details-container {
+    max-width: 800px; /* Adjust as needed */
+    margin: 2rem auto; /* Center the container */
+    padding: 2rem;
+    background-color: #fff; /* White background */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: var(--shadow-default); /* Use your shadow variable */
+    background-color: #32626b;
+}
+
+.game-title {
+    font-size: 2rem; /* Larger title */
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: hsl(var(--color-dark-01)); /* Dark title color */
+}
+
+.game-image {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.game-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px; /* Rounded image corners */
+}
+
+.details-section {
+    margin-bottom: 2.5rem;
+}
+
+.details-section h3 {
+    font-size: 1.2rem; /* Smaller section heading */
+    margin-bottom: 0.5rem;
+    color: hsl(var(--color-dark-01)); /* Dark heading color */
+}
+
+.details-section p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Buttons (Reuse styles from cards.css) */
+.card_buttons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+/* ... (include your existing button styles from cards.css) ... */
